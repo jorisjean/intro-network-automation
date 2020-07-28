@@ -18,6 +18,7 @@ try:
     output = channel.recv(4096)
     while not output.decode('ascii').endswith('#'):
         sleep(0.5)
+        output = channel.recv(4096)
     channel.send("show run | i hostname\n")
     output = channel.recv(4096)
     while not output.decode('ascii').endswith('#'):
